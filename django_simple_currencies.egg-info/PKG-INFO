@@ -1,3 +1,22 @@
+Metadata-Version: 2.1
+Name: django-simple-currencies
+Version: 0.1
+Summary: Currency, exchange rate and conversions support for django projects
+Home-page: https://github.com/bashu/django-simple-currencies
+Author: Basil Shubin
+Author-email: basil.shubin@gmail.com
+License: BSD License
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+License-File: LICENSE
+
 django-simple-currencies
 ===
 
@@ -102,4 +121,6 @@ or use the filter :
 Please see ```example``` application. This application is used to manually test the functionalities of this package. This also serves as a good example.
 
 You need only Django 1.4 or above to run that. It might run on older versions but that is not tested.
+
+
 
