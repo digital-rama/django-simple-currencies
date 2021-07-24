@@ -11,9 +11,9 @@ from .conf import SESSION_KEY
 @never_cache
 def set_currency(request):
     next, currency_code = (
-        request.REQUEST.get('next'), request.REQUEST.get('currency_code', None))
+        request.POST.get('next'), request.POST.get('currency_code', None))
 
-    if not is_safe_url(url=next, host=request.get_host()):
+    if not is_safe_url(url=next, allowed_hosts=request.get_host()):
         next = request.META.get('HTTP_REFERER')
         if not is_safe_url(url=next, host=request.get_host()):
             next = '/'
@@ -25,4 +25,3 @@ def set_currency(request):
         else:
             response.set_cookie(SESSION_KEY, currency_code)
     return response
-
