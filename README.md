@@ -9,7 +9,7 @@ django-simple-currencies allows you to define different currencies, and includes
 
 ## Setup
 
-Either clone this repository into your project, or install with ```pip install django-simple-currencies```
+Either clone this repository into your project, or install with ```pip install django-simple-currencies-py3```
 
 You'll need to add ```currencies``` to ```INSTALLED_APPS``` in your project's ``settings.py`` file :
 
@@ -20,28 +20,28 @@ INSTALLED_APPS = (
 )
 ```
 
-Add ```currencies.middleware.CurrencyMiddleware``` to ```MIDDLEWARE_CLASSES```, must be after ```django.contrib.sessions.middleware.SessionMiddleware``` : 
+Add ```currencies.middleware.CurrencyMiddleware``` to ```MIDDLEWARE_CLASSES```, must be after ```django.contrib.sessions.middleware.SessionMiddleware``` :
 
 ```python
 MIDDLEWARE_CLASSES = (
-    ...    
+    ...
     'django.contrib.sessions.middleware.SessionMiddleware',
     'currencies.middleware.CurrencyMiddleware',  # must be after 'SessionMiddleware'
     ...
 )
 ```
 
-If you're going to use site-wide caching, add ```currencies.middleware.CacheCurrencyMiddleware```, but before ```django.middleware.cache.FetchFromCacheMiddleware``` : 
+If you're going to use site-wide caching, add ```currencies.middleware.CacheCurrencyMiddleware```, but before ```django.middleware.cache.FetchFromCacheMiddleware``` :
 
 ```python
 MIDDLEWARE_CLASSES = (
     ...
     'currencies.middleware.CacheCurrencyMiddleware',  # must be before 'FetchFromCacheMiddleware'
-    'django.middleware.cache.FetchFromCacheMiddleware',    
+    'django.middleware.cache.FetchFromCacheMiddleware',
 )
 ```
 
-Be sure you have the `django.core.context_processors.request` context processor listed in ```TEMPLATE_CONTEXT_PROCESSORS``` : 
+Be sure you have the `django.core.context_processors.request` context processor listed in ```TEMPLATE_CONTEXT_PROCESSORS``` :
 
 ```python
 TEMPLATE_CONTEXT_PROCESSORS = [
@@ -82,15 +82,15 @@ The ``update_rates`` management command will update all your currencies against 
 First of all, load the ```currencies``` in every template where you want to use it :
 
     {% load currencies %}
-    
+
 to get a list of the active currencies :
 
     {% get_currencies as CURRENCIES %}
-    
+
 to get the currently set currency :
 
     {% get_current_currency as CURRENCY %}
-    
+
 and then to convert to a given currency :
 
     {% change_currency [amount] [currency_code] %}
@@ -102,4 +102,3 @@ or use the filter :
 Please see ```example``` application. This application is used to manually test the functionalities of this package. This also serves as a good example.
 
 You need only Django 1.4 or above to run that. It might run on older versions but that is not tested.
-
